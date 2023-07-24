@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <h1></h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | Results summary component</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body,
+    html 
+body,
+html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pink-box {
+  width: 740px;
+  height: 515px;
+  background-color: white;
+  display: flex;
+  border-radius: 50px;
+  box-shadow: 0px 30px 80px hsl(234, 85%, 45%, 0.5);
+}
+
+.yellow-box,
+.green-box {
+  width: 370px;
+  height: 515px;
+  font-size: 24px;
+  margin-top: 0px;
+  color: white;
+}
+
+.yellow-box {
+  background: rgb(120, 87, 255);
+  background: linear-gradient(180deg, hsl(252, 100%, 67%) 0%, hsl(241, 81%, 54%) 100%);
+  border-radius: 50px;
+}
+
+.green-box {
+  background-color: white;
+  border-radius: 0 50px 50px 0;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, hsla(256, 72%, 46%, 1) 0%, hsla(241, 72%, 46%, 0) 100%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.green-box .summary {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: hsl(241, 100%, 89%);
+  margin-bottom: 20px;
+}
+
+.yellow-box .your-result {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: hsl(241, 100%, 89%);
+  margin-bottom: 35px;
+}
+
+/* Teks "76 of 100" */
+.yellow-box .score {
+  text-align: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 92px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+/* Teks "Great" */
+.yellow-box .result-text {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: hsl(221, 100%, 96%);
+  margin-bottom: 15px;
+}
+
+/* Teks deskripsi */
+.yellow-box .description {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  width: 200px;
+  text-align: center;
+  color: hsl(241, 100%, 89%);
+}
+
+/* CSS untuk class yellow-box dan green-box */
+.yellow-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.confirm-button {
+  width: 285px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: hsl(224, 30%, 27%);
+  border-color: transparent;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+/* Efek hover */
+.confirm-button:hover {
+  background: rgb(120, 87, 255);
+  background: linear-gradient(180deg, hsl(252, 100%, 67%) 0%, hsl(241, 81%, 54%) 100%);
+  border-color: transparent;
+}
+
+.attribution {
+  font-size: 14px;
+  text-align: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  margin-top: 40px;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.width30 {
+  width: 30px;
+}
+
+.data-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 285px;
+  height: 60px;
+  border-radius: 15px;
+  font-family: "Hanken Grotesk", sans-serif;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.category {
+  width: 40px;
+  margin-right: max;
+  font-weight: 800;
+}
+
+.score {
+  text-align: right;
+  flex: 1;
+  margin-bottom: 0px;
+  color: hsl(224, 30%, 27%);
+  font-weight: 800;
+}
+
+.score span {
+  color: hsl(224, 30%, 27%, 0.5); /* Menentukan warna teks tulisan "/ 100" menjadi pink */
+}
+
+.red {
+  background-color: hsl(0, 100%, 67%, 0.2);
+  color: hsl(0, 100%, 67%);
+}
+
+.yellow {
+  background-color: hsl(39, 100%, 56%, 0.2);
+  color: hsl(39, 100%, 56%);
+}
+
+.green {
+  background-color: hsl(166, 100%, 37%, 0.2);
+  color: hsl(166, 100%, 37%);
+}
+
+.blue {
+  background-color: hsl(234, 85%, 45%, 0.2);
+  color: hsl(234, 85%, 45%);
+}
+
+.black {
+  color: hsl(224, 30%, 27%);
+  font-weight: 800;
+}
+
+.score.green {
+  color: green;
+}
+
+#count {
+  margin-top: 0px;
+    font-size: 110px;
+    margin-bottom: -10px;
+    color: #fff;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 800;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .confirm-button {
+    width: 300px;
+  }
+  .width30 {
+    width: 50px;
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex: 1;
+    overflow: scroll;
+  }
+
+  .pink-box {
+    padding-top: 0px;
+    margin-top: 0px;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    border-radius: 25px;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 0px;
+  }
+
+  .yellow-box {
+    width: 100%;
+    height: 355px;
+    border-radius: 0 0 25px 25px;
+  }
+
+  .green-box {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 0px;
+    box-sizing: border-box;
+  }
+
+  .attribution {
+    display: none;
+  }
+
+  .circle {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, hsla(256, 72%, 46%, 1) 0%, hsla(241, 72%, 46%, 0) 100%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
+
+  .yellow-box .score {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 64px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .yellow-box .your-result {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    font-weight: bold;
+    color: hsl(241, 100%, 89%);
+    margin-bottom: 0px;
+    margin-top: -25px;
+  }
+  .yellow-box .result-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: hsl(221, 100%, 96%);
+    margin-bottom: 15px;
+  }
+
+  .yellow-box .description {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: 250px;
+    text-align: center;
+    color: hsl(241, 100%, 89%);
+  }
+  .green-box .summary {
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  .data-item {
+    width: 100%;
+    height: 60px;
+  }
+
+  .confirm-button {
+    width: 100%;
+    height: 60px;
+  }
+}
+
+</style>
+</head>
+  <body>
+    <div class="container" role="main">
+      <div class="row justify-content-center">
+        <div class="col">
+          <div class="pink-box">
+            <div class="yellow-box">
+              
+              <!-- Isi konten di dalam yellow-box sesuai kebutuhan -->
+              <div class="your-result">Your Result</div>
+              <div class="circle">
+                <div class="">
+                  <div id="count"></div>
+                  <div class="description" style="font-weight: 700; font-size: 18px;">of 100</div>
+                </div>
+              </div>
+              <div class="result-text">Great</div>
+              <div class="description">You scored higher than 65% of the people who have taken these tests.</div>
+            </div>
+            <div class="green-box">
+              <div class="summary" style="color: hsl(224, 30%, 27%);">Summary</div>
+              <div id="data-container"></div>
+              <button class="confirm-button">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.        Coded by
+        <a href="#">Alfian D</a>.
+        
+    <script>
+        // Fungsi untuk memuat dan menampilkan data JSON
+        function loadData() {
+            // Ubah URL jika file data.json berada di lokasi yang berbeda
+            const jsonFile = 'data.json';
+
+            // Memuat data JSON menggunakan Fetch API
+            fetch(jsonFile)
+                .then(response => response.json()) // Menguraikan respons menjadi JSON
+                .then(data => {
+                    // Ambil referensi ke elemen <div> yang akan menampilkan data JSON
+                    const dataContainer = document.getElementById('data-container');
+                    const countContainer = document.getElementById('count');
+
+                    // Hapus konten sebelumnya dari elemen
+                    dataContainer.innerHTML = '';
+                    countContainer.innerHTML = '';
+
+                    // Variabel untuk menyimpan total skor dan jumlah kategori
+                    let totalScore = 0;
+                    let totalCategories = data.length;
+
+                    // Iterasi melalui setiap objek dalam data JSON
+                    data.forEach((obj, index) => {
+                        // Buat elemen baru untuk menampilkan data
+                        const dataItem = document.createElement('div');
+                        dataItem.classList.add('data-item');
+
+                        // Buat elemen untuk menampilkan "icon"
+                        const iconElement = document.createElement('img');
+                        iconElement.src = obj.icon;
+                        iconElement.alt = `${obj.category}`;
+                        iconElement.classList.add('icon');
+
+                        // Buat elemen untuk menampilkan "category" di sebelah kiri
+                        const categoryElement = document.createElement('div');
+                        categoryElement.textContent = `${obj.category}`;
+                        categoryElement.classList.add('category');
+
+                        // Buat elemen untuk menampilkan "score" di bagian kanan
+                        const scoreElement = document.createElement('div');
+                        scoreElement.textContent = `${obj.score.toLocaleString()}`;
+                        scoreElement.classList.add('score');
+
+                         
+                        const scoreSpan = document.createElement('span');
+                        scoreSpan.textContent = ` / 100`;
+
+                        // Tambahkan elemen span ke dalam elemen skor
+                        scoreElement.appendChild(scoreSpan);
+
+                        // Tambahkan elemen ke dalam container
+                        dataItem.appendChild(iconElement);
+                        dataItem.appendChild(categoryElement);
+                        dataItem.appendChild(scoreElement);
+                        totalScore += obj.score;
+
+                        // Tentukan warna latar belakang sesuai index
+                        const colors = ['red', 'yellow', 'green', 'blue'];
+                        dataItem.classList.add(colors[index % colors.length]);
+
+                        dataContainer.appendChild(dataItem);
+                    });
+
+                    const averageScore = totalScore / totalCategories;
+                    const roundedAverageScore = Math.floor(averageScore);
+
+                    // Tampilkan hasil perhitungan dalam elemen dengan ID "count"
+                    const countElement = document.createElement('span');
+                    countElement.textContent = `${roundedAverageScore.toLocaleString()}`;
+                    countContainer.appendChild(countElement);
+
+                })
+                .catch(error => {
+                    console.error('Gagal memuat data JSON:', error);
+                });
+        }
+
+        // Panggil fungsi untuk memuat dan menampilkan data saat halaman dimuat
+        loadData();
+    </script>
+  </body>
+</html>
+</html>
